@@ -105,17 +105,11 @@ function printIcon(array) {
         let prefix = elem['prefix'];
         let name = elem['name'];
         let family = elem['family'];
-        let colors;
-        if (elem['type'] == 'animal') {
-            colors = 'purple';
-        } else if (elem['type'] == 'vegetable') {
-            colors = 'orange';
-        } else {
-            colors = 'yellow';
-        }
+        let color = elem['color'];
+        
         const icon = `
             <div>
-                <i class= "${family} ${prefix + name}" style="color:${colors}"></i>
+                <i class= "${family} ${prefix + name}" style="color:${color}"></i>
                 <div class= "title">${name.toUpperCase()}</div>
             </div>
         `;
@@ -125,14 +119,41 @@ function printIcon(array) {
 }
 
 function colors() {
-    return ['purple', 'orange', 'yellow', 'blue', 'green'];
+    return ['purple', 'orange', 'green', 'blue', 'yellow'];
+}
+
+function iconsTypes(array) {
+    const arrTypes = [];
+    array.forEach((elem) => {
+        if (!arrTypes.includes(elem['type'])) {
+            arrTypes.push(elem['type']);
+        }
+    });
+    return arrTypes;
+}
+
+function colorIcons(array, arrTypes, colors) {
+    const arrColorType = array.map(elem => {
+        const elemClone = { ...elem };
+        const iconType = elemClone['type'];
+        const indexType = arrTypes.indexOf(iconType);
+        const color = colors[indexType];
+        elemClone['color'] = color;
+        return elemClone;
+    });
+    return arrColorType;
+
 }
 
 
-
-
 function init() {
-    printIcon(getIconsDb());
+    const arrIcons = getIconsDb();
+    const type = iconsTypes(arrIcons);
+    const color = colors();
+
+    const colorIcon = colorIcons(arrIcons, type, color);
+
+    printIcon(colorIcon);
 }
 
 $(init);
