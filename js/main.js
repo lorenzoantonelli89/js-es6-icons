@@ -96,6 +96,30 @@ function getIconsDb() {
             type: "user",
             family: "fas",
         },
+        {
+            name: "compact-disc",
+            prefix: "fa-",
+            type: "computers",
+            family: "fas",
+        },
+        {
+            name: "desktop",
+            prefix: "fa-",
+            type: "computers",
+            family: "fas",
+        },
+        {
+            name: "headphones",
+            prefix: "fa-",
+            type: "computers",
+            family: "fas",
+        },
+        {
+            name: "mobile",
+            prefix: "fa-",
+            type: "computers",
+            family: "fas",
+        }
     ];
 }
 
