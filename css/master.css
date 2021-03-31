@@ -36,7 +36,8 @@
   }
   .icons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     height: 100%;
